@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter} from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes"
+// import { ThemeProvider } from "next-themes"
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+import Providers from "./components/Providers";
+
 
 
 const inter = Inter({
@@ -22,8 +24,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.className} h-full `}
     >
-      <body className="min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" enableSystem defaultTheme="light">
+      <body suppressHydrationWarning className="min-h-screen flex flex-col">
+        <Providers>
           <div className="grid min-h-screen grid-cols-1 grid-rows-[auto_1fr] md:grid-cols-[250px_1fr] md:grid-rows-[auto_1fr]">
             <aside className="hidden md:block md:row-span-2 w-full h-full ">
               <SideBar />
@@ -35,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               {children}
             </main>
           </div>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

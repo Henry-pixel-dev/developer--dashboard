@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Dashboard
+
+A single-page dashboard built with Next.js, showing key metrics, progress indicators, and interactive charts at a glance. No multi-page navigation — everything lives on one screen.
+
+## Features
+
+- **Stat cards** — quick-glance metrics (clients added, contracts signed, invoices sent) with week-over-week change indicators and circular progress rings.
+- **Payment overview chart** — line chart with a day/month toggle to switch the time range being displayed.
+- **Distribution pie chart** — doughnut chart breaking down data by category.
+- Responsive layout with dark mode support.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router, Turbopack)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ECharts](https://echarts.apache.org/) via [echarts-for-react](https://github.com/hustcc/echarts-for-react)
+- [react-icons](https://react-icons.github.io/react-icons/)
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+`npm run build` compiles and optimizes the app into the `.next` folder. `npm run start` serves that production build locally — this is the closest preview to what real users will see (no hot reload, minified bundles, pre-rendered static pages where possible).
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+├── page.tsx              # Main dashboard page
+└── components/
+    ├── ChartBox.tsx      # Payment overview card (day/month toggle + line chart)
+    ├── Chart.tsx         # Line chart component (ECharts)
+    └── PieChart.tsx      # Distribution pie/doughnut chart (ECharts)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
+- This is currently a single-route app (`/`) — no routing/navigation between pages.
+- Charts use `notMerge={true}` on `ReactECharts` to ensure the chart fully replaces its option on updates rather than merging with the previous render.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

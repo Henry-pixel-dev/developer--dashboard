@@ -1,6 +1,7 @@
 import { FaChevronDown, FaChevronRight  } from "react-icons/fa"
-import Chart from "./components/Chart";
+
 import PieChart from "./components/PieChart";
+import ChartBox from "./components/ChartBox";
 
 
 
@@ -129,40 +130,11 @@ export default function DashBoard() {
       </div>
 
       <div className="flex justify-between space-x-6 w-full">
-        <div className="flex-2 flex flex-col space-y-6 bg-white rounded-xl p-6">
-          <div className="flex justify-between w-full">
-            <h2 className="font-bold">
-              Payment Overview
-            </h2>
-            <div className="flex items-center space-x-2">
-              <p className="font-bold text-base ">SHORT BY:</p>
-              <p className="text-sm">Current Week </p>
-              <FaChevronDown size={10}/>
-            </div>
+        <ChartBox/>
+        <div className="flex-1 flex items-center  bg-white dark:bg-gray-900 rounded-xl p-6">
+          <div className="w-full h-full">
+            <PieChart/>
           </div>
-          <Chart/>
-          <div className="flex justify-around items-center ">
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-300">
-                Recieved Amount
-              </p>
-              <p className="font-bold text-base text-center">
-                $40,000
-              </p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-300">
-                Due Amount
-              </p>
-              <p className="font-bold text-base text-center">
-                $38,000
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div className="flex-1 flex flex-col items-center justify-center  bg-white rounded-xl p-6">
-          <PieChart/>
         </div>
       </div>
     </main>

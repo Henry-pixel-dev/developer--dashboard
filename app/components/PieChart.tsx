@@ -9,14 +9,14 @@ export default function PieChart() {
             trigger: 'item'
         },
         legend: {
-            top: '5%',
+            down: '1%',
             left: 'center'
         },
         series: [
             {
             name: 'Access From',
             type: 'pie',
-            radius: ['50%', '30%'],
+            radius: ['40%', '70%'],
             avoidLabelOverlap: false,
             label: {
                 show: false,
@@ -42,8 +42,8 @@ export default function PieChart() {
             }
         ]
         };
-
+    
   return (
-    <ReactECharts option={option} />
+    <ReactECharts option={option} notMerge={true}/>
   )
 }

@@ -9,7 +9,7 @@ export default function profile() {
         <Image
           src={man}
           alt="profile icon"
-          quality={100}
+          quality={70}
           placeholder="blur"
           className="h-10 w-10 rounded-full "
         />
